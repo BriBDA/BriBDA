@@ -1,0 +1,76 @@
+Here I am querying a bank database to see which product is the best option for a certain customer
+1
+CREATE TABLE bank_products (
+2
+    product_id INTEGER PRIMARY KEY,
+3
+    product_name TEXT,
+4
+    product_type TEXT,
+5
+    interest_rate DECIMAL(5, 2),
+6
+    monthly_fee DECIMAL(6, 2),
+7
+    minimum_balance DECIMAL(10, 2)
+8
+);
+9
+​
+10
+INSERT INTO bank_products (product_id, product_name, product_type, interest_rate, monthly_fee, minimum_balance)
+11
+VALUES
+12
+    (1, 'Savings Account', 'Savings', 0.75, 0.00, 100.00),
+13
+    (2, 'Checking Account', 'Checking', 0.25, 5.00, 50.00),
+14
+    (3, 'Business Account', 'Business', 1.50, 10.00, 500.00),
+15
+    (4, 'Credit Card', 'Credit Card', 18.99, 0.00, 0.00),
+16
+    (5, 'Mortgage Loan', 'Loan', 3.25, 0.00, 100000.00),
+17
+    (6, 'Certificate of Deposit', 'Savings', 1.50, 0.00, 1000.00),
+18
+    (7, 'Student Checking Account', 'Checking', 0.10, 0.00, 10.00),
+19
+    (8, 'Business Credit Card', 'Credit Card', 16.99, 0.00, 0.00),
+20
+    (9, 'Home Equity Loan', 'Loan', 4.50, 0.00, 50000.00),
+21
+    (10, 'IRA Account', 'Savings', 1.25, 0.00, 500.00),
+22
+    (11, 'Personal Loan', 'Loan', 8.75, 0.00, 5000.00),
+23
+    (12, 'Money Market Account', 'Savings', 1.00, 0.00, 500.00),
+24
+    (13, 'Youth Savings Account', 'Savings', 0.50, 0.00, 10.00),
+25
+    (14, 'Rewards Credit Card', 'Credit Card', 21.99, 0.00, 0.00),
+
+    
+#Analysis Questions
+
+#What are the bank product names?
+
+SELECT product_name
+FROM bank_products
+
+#Write a query that uses OR to show the product names that have a Checking OR Savings product type
+
+SELECT product_name 
+FROM bank_products 
+WHERE product_type="Checking" 
+OR product_type="Savings"
+
+#Write a query that uses AND to show the product names that have a "Savings" and have an interest_rate of at least 0.75, AND have no monthly fee. 
+
+SELECT product_name, interest_rate 
+FROM bank_products 
+WHERE product_type="Savings" 
+AND interest_rate>=0.75 
+AND monthly_fee=0;
+
+
