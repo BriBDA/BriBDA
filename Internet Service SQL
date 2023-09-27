@@ -1,0 +1,69 @@
+
+1
+CREATE TABLE products (
+2
+    product_id INTEGER PRIMARY KEY,
+3
+    product_name TEXT,
+4
+    product_type TEXT,
+5
+    speed_mbps INTEGER,
+6
+    data_limit_gb INTEGER,
+7
+    monthly_price DECIMAL(8, 2)
+8
+);
+9
+​
+10
+INSERT INTO products (product_id, product_name, product_type, speed_mbps, data_limit_gb, monthly_price)
+11
+VALUES
+12
+    (1, 'High-Speed Internet', 'Internet', 100, 500, 49.99),
+13
+    (2, 'Unlimited Data Plan', 'Cell Phone Service', NULL, NULL, 35.00),
+14
+    (3, 'Premium TV Package', 'TV Package', NULL, NULL, 79.99),
+15
+    (4, 'Fiber Optic Internet', 'Internet', 500, 1000, 79.99),
+16
+    (5, 'Family Plan', 'Cell Phone Service', NULL, NULL, 25.00);
+17
+    
+18
+CREATE TABLE customer_subscriptions (
+19
+customer_id TEXT PRIMARY KEY,
+20
+product_id INTEGER,
+21
+price DECIMAL(8, 2),
+22
+email TEXT,
+23
+FOREIGN KEY (product_id) REFERENCES products (product_id)
+24
+);
+
+#Questions
+
+#write SQL that will select the product names of all the Internet products types.
+
+Select product_name
+From products
+where product_type="Internet"
+
+
+#Write a query that will select the customer IDs for all the customers who are subscribed to High-Speed Internet
+
+SELECT customer_ID 
+FROM customer_subscriptions 
+WHERE product_id=1
+
+
+#Write a query that will select the email addresses of all the customers who are subscribed to products with the "Internet" product type. 
+
+
